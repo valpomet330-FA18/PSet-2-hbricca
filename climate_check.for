@@ -36,7 +36,7 @@
 
 *     If the year is divisible by 4, then it's a leap year.
   
-      IF(MOD (Year,400) .EQ. 0 .AND. MOD (Year,4) .EQ. 0 ) THEN
+      IF(MOD (Year,400) .EQ. 0 .OR. MOD (Year,4) .EQ. 0 ) THEN
         
         PRINT *,Year, 'is a leap year. '
         leap = 1
@@ -53,7 +53,7 @@
 *     This is the else if statement to calculate a Julian day using days
 *     of the month.
 
-       jd = 0
+       sumjd = 0
 
        m(1)= 31
        m(2)= 28
@@ -72,7 +72,7 @@
          do j=1, (month-1)
            sumjd= sumjd+m(j)
            enddo 
-           jd= sumjd+day-1
+           jd= sumjd+day+1
  
          ELSE
            do j=1, (month-1)
