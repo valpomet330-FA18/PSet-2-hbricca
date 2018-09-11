@@ -8,7 +8,7 @@
 * By: Heather Bricca                              *
 *     Worked with Jilliann Dufort                 * 
 *                                                 *
-* September 9,2018                                *
+* September 11,2018                               *
 *                                                 *
 * Modifications: (none)                           *
 *                                                 *
@@ -19,92 +19,74 @@
 *                                                 *
 ***************************************************
       
-      INTEGER Y, m(11), month, day, year, monthsum, jd, tmpf
+      INTEGER m(11), month, day, Year, monthsum, jd, tmpf, jdsum
  
       OPEN (UNIT=15, FILE = 'climate_data.txt', STATUS = 'UNKNOWN')
 
 *     Now read in the file climate_data.txt.
+ 
+*      READ (15,*)
+      do i=1, 10
+        READ (15,*) Year, month, day, tmpf
 
-      READ (15,*)
-         do i = 1, 10
-         
-         READ (15,*) year, month, day, tmpf
-         
-         ENDDO
+*     Print statement to choose year to then see if it's a leap year.
 
-      PRINT *, 'Choose a year to see if it is a leap year.'
-      READ (*,*) Y
+*      PRINT *, 'Choose a year to see if it is a leap year.'
+*      READ (*,*) Year
 
 *     If the year is divisible by 4, then it's a leap year.
   
-      IF(MOD (Y,100) .NE. 0 .AND. MOD (Y,4) .EQ. 0) THEN
+      IF(MOD (Year,400) .EQ. 0 .AND. MOD (Year,4) .EQ. 0 ) THEN
         
-        PRINT *,Y, 'is a leap year. '
-
-*     If the year is divisible by 400, then it's a leap year.
- 
-      ELSEIF (MOD (Y,400) .EQ. 0) THEN
-  
-        PRINT *, Y, 'is a leap year.'
-
+        PRINT *,Year, 'is a leap year. '
+        leap = 1
 
 *     If the year is anything else, it is not a leap year.
 
       ELSE 
 
-         PRINT *,Y,  'is not a leap year' 
-      
+         PRINT *,Year,  'is not a leap year' 
+         leap = 0
+
       END IF 
 
+*     This is the else if statement to calculate a Julian day using days
+*     of the month.
 
-*     Now choose what the day, month and year is.
-      
+       jd = 0
 
-      PRINT *, "Give day"    
-      
-      read (15,*) day    
-      
-      PRINT *, "Give month"    
-      
-      read (15,*) month    
-      
-      PRINT *, "Give year"    
-      
-      read (15,*) year 
-
-*     This is how many days are in each month.
-
-      m(1) = 31 
-      m(2) = 28 
-      m(3) = 31
-      m(4) = 30
-      m(5) = 31
-      m(6) = 30
-      m(7) = 31
-      m(8) = 31
-      m(9) = 30
-      m(10) = 31
-      m(11) = 30 
-   
-
-
-*     This is the else if statement to determine a Julian day.
-
-       if (MOD(year,100) .NE. 0 .AND. MOD(year,4) .EQ. 0) THEN     
-         
-         do i = 1, (month-1)    
-            monthsum = monthsum + m(1)  
-            jd = monthsum + day + 1
-        end do    
-
-        else    
-         do i = 1, (month-1)    
-            monthsum = monthsum + m(1) + day    
-         end do    
-      end if  
-
-      PRINT *, 'The number of Julian day is', jd   
-      
-
+       m(1)= 31
+       m(2)= 28
+       m(3)= 31
+       m(4)= 30
+       m(5)= 31
+       m(6)= 30
+       m(7)= 31
+       m(8)= 31
+       m(9)= 30
+       m(10)=31
+       m(11)=30
        
+       If (MOD (Year,400) .EQ. 0 .AND. MOD (Year,4) .EQ. 0 .AND. month .GT. 2)  THEN
+          
+         do j=1, (month-1)
+           sumjd= sumjd+m(j)
+           enddo 
+           jd= sumjd+day-1
+ 
+         ELSE
+           do j=1, (month-1)
+           sumjd= sumjd+ m(j)
+           enddo
+         jd= sumjd+day
+         END IF
+
+         PRINT *, 'Month=', month
+         PRINT *, 'Day=', day
+         PRINT *, 'Year=', Year
+         PRINT *, 'The number of Julian day is', jd   
+         PRINT *, 'Temperature (F)=', tmpf
+      
+      
+      ENDDO
       END
