@@ -122,14 +122,18 @@
         PRINT *, 'For summer, climate records show this temperature is a record low.' 
       END IF
 
-
-
-
-
-
-
-
-
+*     If statement for records for Fall season.
+      IF (month .EQ. 9 .OR. month .EQ. 10 .OR. month .EQ. 11 .AND. tmpf .EQ. 101) THEN
+         PRINT *, 'For fall climate records show this temperature is a record high.'
+       ELSE IF (month .EQ. 9 .OR. month .EQ. 10 .OR. month .EQ. 11 .AND. tmpf .EQ. 74) THEN
+        PRINT *, 'For fall, climate records show this temperature is well above average.'
+       ELSE IF (month .EQ. 9 .OR. month .EQ. 10 .OR. month .EQ. 11 .AND. tmpf .EQ. 62.8) THEN
+        PRINT *, 'For fall, climate records show this temperature is average.'
+       ELSE IF (month .EQ. 9 .OR. month .EQ. 10 .OR. month .EQ. 11 .AND. tmpf .EQ. 52) THEN
+        PRINT *, 'For fall, climate records show this temperature is a well below average'
+       ELSE IF (month .EQ. 9 .OR. month .EQ. 10 .OR. month .EQ. 11 .AND. tmpf .EQ. 10) THEN
+        PRINT *, 'For fall, climate records show this temperature is a record low.' 
+      END IF
 
       END DO
       END
