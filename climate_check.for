@@ -53,7 +53,7 @@
       PRINT *, "Give day"    
       read (15,*) day    
       PRINT *, "Give month"    
-      read (15,*) mon    
+      read (15,*) month    
       PRINT *, "Give year"    
       read (15,*) year 
 
@@ -70,7 +70,7 @@
       m(9) = 30
       m(10) = 31
       m(11) = 30 
-      m(12) = 31  
+   
 
 *      monthsum = 0
 
@@ -78,9 +78,15 @@
 
        if (MOD(year,100) .NE. 0 .AND. MOD(year,4) .EQ. 0) THEN     
          
-         do i = month(1), mon-1    
-            monthsum = monthsum + month + day  
+         do i = 1, (month-1)    
+            monthsum = monthsum + m(1)  
          end do    
+
+
+
+
+
+
 *      else    
 *         do i = month(1), mon-1    
 *            sum_month = sum_month + month(1) + day    
