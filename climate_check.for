@@ -19,9 +19,18 @@
 *                                                 *
 ***************************************************
       
-      INTEGER Y, m(11), month, day, year, monthsum, jd
+      INTEGER Y, m(11), month, day, year, monthsum, jd, tmpf
  
       OPEN (UNIT=15, FILE = 'climate_data.txt', STATUS = 'UNKNOWN')
+
+*     Now read in the file climate_data.txt.
+
+      READ (15,*)
+         do i = 1, 10
+         
+         READ (15,*) year, month, day, tmpf
+         
+         ENDDO
 
       PRINT *, 'Choose a year to see if it is a leap year.'
       READ (*,*) Y
@@ -45,7 +54,8 @@
 
          PRINT *,Y,  'is not a leap year' 
       
-      END IF
+      END IF 
+
 
 *     Now choose what the day, month and year is.
       
@@ -77,7 +87,6 @@
       m(11) = 30 
    
 
-*      monthsum = 0
 
 *     This is the else if statement to determine a Julian day.
 
