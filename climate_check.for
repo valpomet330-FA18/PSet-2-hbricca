@@ -19,7 +19,7 @@
 *                                                 *
 ***************************************************
       
-      INTEGER Y, m(11), month, day, year, monthsum
+      INTEGER Y, m(11), month, day, year, monthsum, jd
  
       OPEN (UNIT=15, FILE = 'climate_data.txt', STATUS = 'UNKNOWN')
 
@@ -51,10 +51,15 @@
       
 
       PRINT *, "Give day"    
+      
       read (15,*) day    
+      
       PRINT *, "Give month"    
+      
       read (15,*) month    
+      
       PRINT *, "Give year"    
+      
       read (15,*) year 
 
 *     This is how many days are in each month.
@@ -80,20 +85,16 @@
          
          do i = 1, (month-1)    
             monthsum = monthsum + m(1)  
+            jd = monthsum + day + 1
+        end do    
+
+        else    
+         do i = 1, (month-1)    
+            monthsum = monthsum + m(1) + day    
          end do    
-
-
-
-
-
-
-*      else    
-*         do i = month(1), mon-1    
-*            sum_month = sum_month + month(1) + day    
-*         end do    
       end if  
 
-*      PRINT *, sum_month   
+      PRINT *, 'The number of Julian day is', jd   
       
 
        
