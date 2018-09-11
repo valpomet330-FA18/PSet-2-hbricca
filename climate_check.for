@@ -19,7 +19,7 @@
 *                                                 *
 ***************************************************
       
-      INTEGER Y
+      INTEGER Y, m(11), month, day, year, monthsum
  
       OPEN (UNIT=15, FILE = 'climate_data.txt', STATUS = 'UNKNOWN')
 
@@ -47,11 +47,8 @@
       
       END IF
 
-*    Now to determine what the Julian Day of the year is.
-
-*      integer day, sum_month, i, month(12), jd, year, mon  
-
-      month = 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31   
+*     Now choose what the day, month and year is.
+      
 
       PRINT *, "Give day"    
       read (15,*) day    
@@ -59,18 +56,36 @@
       read (15,*) mon    
       PRINT *, "Give year"    
       read (15,*) year 
-*
-*      sum_month = 0  
-*
-*       if (mod(year,4) .EQ. 0 .and. mod(year,100)/ .EQ. 0) then     
-*         do i = month(1), mon-1    
-*            sum_month = sum_month + month(1) + day + 1    
-*         end do    
+
+*     This is how many days are in each month.
+
+      m(1) = 31 
+      m(2) = 28 
+      m(3) = 31
+      m(4) = 30
+      m(5) = 31
+      m(6) = 30
+      m(7) = 31
+      m(8) = 31
+      m(9) = 30
+      m(10) = 31
+      m(11) = 30 
+      m(12) = 31  
+
+*      monthsum = 0
+
+*     This is the else if statement to determine a Julian day.
+
+       if (MOD(year,100) .NE. 0 .AND. MOD(year,4) .EQ. 0) THEN     
+         
+         do i = month(1), mon-1    
+            monthsum = monthsum + month + day  
+         end do    
 *      else    
 *         do i = month(1), mon-1    
 *            sum_month = sum_month + month(1) + day    
 *         end do    
-*      end if  
+      end if  
 
 *      PRINT *, sum_month   
       
