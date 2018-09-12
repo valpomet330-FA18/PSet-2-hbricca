@@ -91,28 +91,28 @@
         PRINT *, 'For winter, climate records show this temperature is average.'
        ELSE IF (month .EQ. 1 .OR. month .EQ. 2 .OR. month .EQ. 12 .AND. tmpf .LE. 28) THEN
         PRINT *, 'For winter, climate records show this temperature is a well below average'
-       ELSE IF (month .EQ. 1 .OR. month .EQ. 2 .OR. month .EQ. 12 .AND. tmpf .LT. 28 .AND. tmpf .GT. -10) THEN
+       ELSE IF (month .EQ. 1 .OR. month .EQ. 2 .OR. month .EQ. 12 .AND. tmpf .LT. 28 .AND. tmpf .GE. -10) THEN
         PRINT *, 'For winter, climate records show this temperature is a record low.'
        
       END IF
 
 *     If statement for records for Spring season.
-      IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .EQ. 96) THEN
+      IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .GE. 96) THEN
          PRINT *, 'For spring, climate records show this temperature is a record high.'
-       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .EQ. 71) THEN
+       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .GT. 71 .AND. tmpf .LT. 96) THEN
         PRINT *, 'For spring, climate records show this temperature is well above average.'
-       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .EQ. 58.6) THEN
+       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .GT. 47 .AND. tmpf .LT. 71) THEN
         PRINT *, 'For spring, climate records show this temperature is average.'
-       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .EQ. 47) THEN
+       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .LE. 58.6 .AND. tmpf .GE. 47) THEN
         PRINT *, 'For spring, climate records show this temperature is a well below average'
-       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .EQ. 13) THEN
+       ELSE IF (month .EQ. 3 .OR. month .EQ. 4 .OR. month .EQ. 5 .AND. tmpf .LT. 47 .AND. tmpf .GE. 13) THEN
         PRINT *, 'For spring, climate records show this temperature is a record low.' 
       END IF
       
 *     If statement for records for Summer season.
-      IF (month .EQ. 6 .OR. month .EQ. 7 .OR. month .EQ. 8 .AND. tmpf .EQ. 105) THEN
+      IF (month .EQ. 6 .OR. month .EQ. 7 .OR. month .EQ. 8 .AND. tmpf .GE. 105) THEN
          PRINT *, 'For summer climate records show this temperature is a record high.'
-       ELSE IF (month .EQ. 6 .OR. month .EQ. 7 .OR. month .EQ. 8 .AND. tmpf .EQ. 87) THEN
+       ELSE IF (month .EQ. 6 .OR. month .EQ. 7 .OR. month .EQ. 8 .AND. tmpf .GT. 87) THEN
         PRINT *, 'For summer, climate records show this temperature is well above average.'
        ELSE IF (month .EQ. 6 .OR. month .EQ. 7 .OR. month .EQ. 8 .AND. tmpf .EQ. 81.7) THEN
         PRINT *, 'For summer, climate records show this temperature is average.'
